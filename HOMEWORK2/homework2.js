@@ -162,7 +162,6 @@ console.log('\n task7, method1:');
 let date = new Date();
 let timeNow = parseInt(date.getHours());
 console.log('time:'+timeNow);
-timeNow=10;
 if ((timeNow < 5) || timeNow >= 23){
     console.log("Good night");
 }
