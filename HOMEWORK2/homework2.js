@@ -131,7 +131,7 @@ let IsTriangle = false;
 
 if ( ( a > 0 ) && ( b > 0 ) && ( c > 0) && ( a + b > c ) && ( b + c > a ) && ( a + c > b ) ){
     p = (a + b + c)*0.5;
-    var s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+    let s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
     //console.log('P=' + p);
     console.log('S=' + s.toFixed(3));
     IsTriangle = true;
