@@ -1,3 +1,6 @@
+
+
+ 
  // ------------------------------------task1-----------------------------------------------------
 console.log('task1:');
 /*1. Заданий масив з елементами [2, 3, 4, 5]. За допомогою циклу for знайдіть добуток елементів
@@ -164,11 +167,11 @@ let x = parseInt(prompt('Specify the number of latest array elements to be displ
 if (isNaN(x)||(x>arr.length)){
 console.log("Error data")}
 else{
-console.log("Last ell" + lastElArray(arr,x));}
+console.log("Last elements:" + lastElArray(arr,x));}
 
 function lastElArray(arr, n) {
     const lastEl = arr.slice(-n);
-    return('last'+n+'elements:'+lastEl);
+    return('last '+ n +' elements: '+lastEl);
 }
 
 
@@ -184,39 +187,25 @@ Input string: 'i love java script'
 Output string: 'I Love Java Script'
 */
 
-function ucFirst(str) {
-    if (!str) return str;
+let str = prompt('incoming data:', "i love java script");
+
+function capitalLetter(str) {
+    //let string = 'I am  the code';
+    let splits = str.split(" ");
+    let task8Result = "";
   
-    return str[0].toUpperCase() + str.slice(1);
-  }
-  
-  alert( ucFirst("i love java script") );
-
-
-/*let str = prompt('vvedit ryadok:', "i love java script");
-
-function ToUpper(str) {
-    let arr = str.split(" ");
-    for (let i=0; i<arr.length; i++)
-    {
-        if (arr[i].charAt(0).ToUpperCase() + arr[i].slice(1);
+    for (let i = 0; i < splits.length; i++) {
+      let Name = splits[i];
+      let First = Name.substring(0, 1).toUpperCase();
+      let Leftovers = Name.substring(1, Name.length)
+      task8Result += First + Leftovers + " ";
     }
-        {a[i+1].ToUpper}
-    };
-    return s;
-   }
- 
-console.log("ToUpper(a)=" + ToUpper(s));
-
-function ucFirst(str) {
-    if (!str) return str;
   
-    return str[0].toUpperCase() + str.slice(1);
+    console.log(task8Result)
   }
-  
-  alert( ucFirst("вася") ); // Вася
+  capitalLetter(str);
 
- */
+
 
 
  
