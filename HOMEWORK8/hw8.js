@@ -43,9 +43,7 @@ function checkEmail(email){
 Для стрінги "cdbBdbsbz" результат ["dbBd", "bB", "d"]
 */
 strT3 = "cdbBdbsbz";
-let myRe = /d{1}b+d{1}/i;
-//let myRe1 = /b+/i;
-//let myRe2 = /d{1}/i;
+let myRe = /d(b+)(d)/i;
 let myArray = strT3.match(myRe);
 alert(myArray);
 
@@ -112,20 +110,14 @@ false
 1, 1, 3
 */
 function checkLogin(login){
-    let reg= /^[a-zA-Z][0-9a-zA-Z\.]{1,9}$/i;
-    alert(login.match(/\d+\.\d+/g));
-    return reg.test(login);
-    //логін вірний, нюанс з крапкою (m.4, 4.g, 00.5, 0..6)
-    //let reg = /^[0-9]*[.,]?[0-9]+$/
+    let reg= /^[a-zA-Z]{1}[0-9a-zA-Z\.]{1,9}$/i;
+    let regNumber = /[0-9\.]+/g;
     
-
-    //видалимо з логіна усі букви:
-    //login = login.replace(/[a-zA-Z]/gi, '');
-    
+    let resNum = login.match(regNumber);
+    let result = reg.test(login);
+    alert(`${login} is ${result} - ${resNum}`);
   }  
-  alert(checkLogin('1.m1')); 
-  alert( "0 1 12.345 7890".match(/\d+\.\d+/g) );
-   // ------------------------------------task7-----------------------------------------------------
-  console.log('\n task7:');
+  //checkLogin('ee1.1ret3');
+  checkLogin('ee1*1ret3');
   
 
