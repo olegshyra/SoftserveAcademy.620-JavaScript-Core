@@ -13,8 +13,8 @@ let mentor = {
 Результат має бути 3.
 propsCount(mentor);  // 3
 */
-let mentor = { 
-    course: "JS fundamental", 
+/*let mentor = { 
+    course: "JS fundamental",   
     duration: 3,
     direction: "web-development" 
 };
@@ -22,7 +22,7 @@ function propsCount(currentObject) {
     return Object.keys(currentObject).length;
 }
 console.log("propsCount(mentor): " + propsCount(mentor));
-
+*/
  
   // ------------------------------------task2-----------------------------------------------------
   console.log('\n task2:');
@@ -30,7 +30,7 @@ console.log("propsCount(mentor): " + propsCount(mentor));
  яка приймає даний об’єкт і виводить список його властивостей записаних в масив. Виведіть також масив 
  значень властивостей об’єкта.*/
  
- let obj = {
+ /*let obj = {
     name: "Oleg",
     age: 32,
     sex: "male",
@@ -45,7 +45,7 @@ function showProps(obj) {
 
 showProps(obj);
 
- 
+ */
   // ------------------------------------task3-----------------------------------------------------
   console.log('\n task3:');
  /*3. Створіть клас Person, в якого конструктор приймає параметри name і surname, а також міститься 
@@ -61,7 +61,7 @@ showProps(obj);
 let stud1 = new Student("Petro", "Petrenko", 2015);
 console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
 console.log("Current course: " + stud1.showCourse()); //Current course: 6*/
-
+/*
 class Person {
        constructor(name, surname) {            
             this.name = name;
@@ -95,10 +95,10 @@ let oishyra = new Student('Oleg', 'Shyra', 2015);
 oishyra.showFullName('Ivanovych');
 
 if ((oishyra.showCourse()>0) && (oishyra.showCourse())<7) 
-    console.log("Current course: " + oishyra.showCourse()); //Current course: 6*/oishyra.showCourse();
+    console.log("Current course: " + oishyra.showCourse()); 
 else
     console.log("Data error")
-    
+ */   
  // ------------------------------------task4-----------------------------------------------------
   console.log('\n task4:');
   /*4. Створіть клас Worker який буде мати конструктор, який приймає наступні властивості: fullName 
@@ -116,63 +116,80 @@ else
 
    */
 class Worker {
-       constructor(fullName, dayRate, workingDays, salary) {            
+    #experience = 1.2;   
+    constructor(fullName, dayRate, workingDays) {            
             this.fullName = fullName;
             this.dayRate = dayRate;
-            this.workingDays = workingDays; 
-            this.salary = salary;
+            this.workingDays = workingDays;             
     }
-    _experience = 1.2;
-
-    showSalary() {            
-              alert (this.dayRate * this.workingDays);
-           }
-   
-    showSalaryWithExperience() {
-         alert (this.dayRate * this.workingDays * this._experience);}
     
-    SalaryWithExperience() {
-             return (this.dayRate * this.workingDays * this._experience);}
-    get experience() {
-        return this._experience;
+    showSalary() {            
+        console.log(this.dayRate * this.workingDays);}
+
+    showSalaryWithExperience() {
+         console.log(this.dayRate * this.workingDays * this.#experience);}
+    
+    showSalaryWorker() {
+             return (this.dayRate * this.workingDays * this.#experience);}
+
+    get showExp() {
+        return this.#experience;
     }
         
-    set experience(value) {
-        this._experience = value;
+    set setExp(experiance) {
+        this.#experience = experiance;
     }
-     
+    
+    sortSalaries(arr) {
+        let sortedSalary = arr.sort(function(a,b){
+            return a.showSalaryWorker() - b.showSalaryWorker();
+        })
+    for (let i = 0; i < sortedSalary.length; i++) {
+        console.log(sortedSalary[i].fullName + ": " + sortedSalary[i].showSalaryWorker());
+    }
+    }
 }
 
 let worker1 = new Worker("John Johnson", 20, 23, 0);
 
 console.log(worker1.fullName); 
 worker1.showSalary();
-worker1.showSalaryWithExperience();
-worker1.experience = 1.5;
+console.log("New experience: " + worker1.showExp);
+worker1.salary = worker1.showSalaryWithExperience();
+worker1.setExp = 1.5;
+console.log("New experience: " + worker1.showExp);
+worker1.salary = worker1.showSalaryWithExperience();
 
-console.log("New experience1.5: " + worker1.experience);
-worker1.salary = worker1.SalaryWithExperience();
 
-let worker2 = new Worker("Tim Tomson", 15, 20, 0);
+let worker2 = new Worker("Tim Tomson", 48, 22, 0);
+console.log(worker2.fullName); 
+worker2.showSalary();
+console.log("New experience: " + worker2.showExp);
+worker2.salary = worker2.showSalaryWithExperience();
+worker2.setExp = 1.5;
+console.log("New experience: " + worker2.showExp);
+worker2.salary = worker2.showSalaryWithExperience();
+
 let worker3 = new Worker("Bill Billson", 40, 26, 0);
+console.log(worker3.fullName); 
+worker3.showSalary();
+console.log("New experience: " + worker3.showExp);
+worker3.salary = worker3.showSalaryWithExperience();
+worker3.setExp = 1.5;
+console.log("New experience: " + worker3.showExp);
+worker3.salary = worker3.showSalaryWithExperience();
+
 let worker4 = new Worker("Jack Jackson", 38, 18, 0);
-worker2.experience = 1.5;
-worker3.experience = 1.5;
-worker4.experience = 1.5;
-worker2.salary = worker2.SalaryWithExperience();
-worker3.salary = worker3.SalaryWithExperience();
-worker4.salary = worker4.SalaryWithExperience();
+console.log(worker4.fullName); 
+worker4.showSalary();
+console.log("New experience: " + worker4.showExp);
+worker4.salary = worker4.showSalaryWithExperience();
+worker4.setExp = 1.5;
+console.log("New experience: " + worker4.showExp);
+worker4.salary = worker4.showSalaryWithExperience();
 
-function sortBySalary(arr) {
-    arr.sort((a, b) => a.salary > b.salary ? 1 : -1);
-  }
-  
 let arr = [worker1, worker2, worker3, worker4];
-  
-sortBySalary(arr);
-
-console.log(arr);
-
+worker4.sortSalaries(arr);
 
   
 
@@ -230,12 +247,61 @@ Tom Tomson: 1584
 toString() {
      return Object.getPrototypeOf(this).constructor.name;
 }
-     }
-		Your code . . . 
-	
-	const figures = [new Triangle(4, 5), new Square(7), new Circle(5)];
-    	console.log(handleFigures(figures));
+     }*/
+class GeometricFigure {
+    getArea() {
+        return 0;
+    }
+    toString() {
+        return Object.getPrototypeOf(this).constructor.name;
+    }
+}
+class Triangle extends GeometricFigure {
+    constructor(h, a)  {
+        super();
+        this.height = h;
+        this.basis = a;        
+    }
+    getArea() {
+        return this.height * this.basis / 2;
+    }
+}
 
+class Square extends GeometricFigure {
+    constructor(a) {
+        super();
+        this.side = a;
+    }
+    getArea(){
+        return this.side * this.side;
+    }
+}
+
+class Circle extends GeometricFigure {
+    constructor(r){
+        super();
+        this.rad = r;
+    }
+    getArea() {
+        return Math.PI * this.rad * this.rad;
+    }
+}
+
+function handleFigures(figures) {
+    return figures.reduce(function(sum, figure){
+        if (figure instanceof GeometricFigure){
+            console.log( `Geometric figure: ${figure.toString()} with area: ${figure.getArea()}`);
+            return sum + figure.getArea();
+        }
+        throw Error("Argument errror");
+    }, 0);
+}
+	
+const figures = [new Triangle(4, 5), new Square(7), new Circle(5)];
+console.log("Total area:" + handleFigures(figures));
+
+
+/*
 Приклад результату:
 	Geometric figure: Triangle - area: 10
 Geometric figure: Square - area: 49
