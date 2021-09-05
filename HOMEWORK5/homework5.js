@@ -303,7 +303,7 @@ console.log("Total area:" + handleFigures(figures));
 
 /*
 Приклад результату:
-	Geometric figure: Triangle - area: 10
+Geometric figure: Triangle - area: 10
 Geometric figure: Square - area: 49
 Geometric figure: Circle - area: 78.53981633974483
 137.53981633974485 // total area
