@@ -5,7 +5,7 @@ console.log('task1:');
 генерацію винятку у випадку, якщо функції передано не числові параметри.
 Напишіть код, який використовує цю функцію та обробляє можливі виняткові ситуації.*/
 
-let width = parseFloat(prompt('enter the width of the rectangle:', "1"));
+/*let width = parseFloat(prompt('enter the width of the rectangle:', "1"));
 let height = parseFloat(prompt('enter the height of the rectangle:', "1"));
 
 function  rectangleArea(width, height) {
@@ -18,7 +18,7 @@ function  rectangleArea(width, height) {
             return width*height;    
   }
   
-console.log('S='+rectangleArea(width,height));  
+console.log('S='+rectangleArea(width,height));  */
  
 // ------------------------------------task2-----------------------------------------------------
 console.log('\n task2:');
@@ -29,7 +29,8 @@ console.log('\n task2:');
 	- вік юзера менше 14 років. 
 В іншому разі юзер отримує доступ до перегляду фільму.
 В блокові catch передбачити виведення назви і опису помилки.*/
-function checkAge() {
+
+/*function checkAge() {
 let age, res;
 let url = new URL('https://www.youtube.com/watch?v=J6pN-6wxeu4&ab_channel=OlehIvaniuk');
 while (true) {
@@ -60,7 +61,7 @@ while (true) {
 }
 }
 let result = checkAge(); 
-console.log(result);
+console.log(result);*/
 
 // ------------------------------------task3-----------------------------------------------------
 console.log('\n task3:');
@@ -75,6 +76,31 @@ name значенням 'MonthException'.
 May
 > console.log(showMonthName(14)); 
 MonthException Incorrect month number*/
+class MonthException {
+  constructor(message){
+    this.message = message;
+    this.name = "MonthException";
+  }
+}
+
+
+function showMonthName(month) {
+  month--;
+  let monthes = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  if (monthes[month] !== undefined ){
+    return monthes[month];    
+  }
+  else  {
+    throw new MonthException("Incorrect month number");
+  }
+}
+try {
+  console.log(showMonthName(5));
+  //console.log(showMonthName(14));
+}
+catch(err) {
+  console.error(err.name, err.message);
+}
 
 
 // ------------------------------------task4-----------------------------------------------------
@@ -91,3 +117,24 @@ showUsers([7, -12, 44, 22]);
 Error: ID must not be negative: -12
 [ {id: 7}, {id: 44}, {id: 22} */
  
+function showUser(id) {
+  if (id<0) {
+    throw new Error("Data error id =" + id + " not correct");
+  }
+  return {id: id };
+}
+function showUsers(ids) {
+  let objArr = [];
+  ids.forEach(function (id) {
+    try {
+      let user = showUser(id);
+      objArr.push(user);
+    }
+    catch (err2) {
+      console.log(err2.message);
+    }
+  });
+  console.log(objArr);
+}
+
+showUsers([7, -12, 44, 22]);
